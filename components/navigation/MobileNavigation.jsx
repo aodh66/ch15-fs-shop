@@ -1,15 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import {
-    Divider,
-    List,
-    ListItem,
-    Drawer,
-    ListItemButton,
-    ListItemText,
-    Box,
-    Typography,
-} from '@/components/mui'
+  Divider,
+  List,
+  ListItem,
+  Drawer,
+  ListItemButton,
+  ListItemText,
+  Box,
+  Typography,
+} from "@/components/mui";
 
 function MobileNavigation({
   mobileOpen = false,
@@ -17,11 +17,11 @@ function MobileNavigation({
     console.log("no handleDrawerToggle function provided"),
   drawerWidth = 240,
 }) {
-    const itemLinkStyles = {
-        display: 'block',
-        textDecoration: 'none',
-        flexGrow: '1',
-    }
+  const itemLinkStyles = {
+    display: "block",
+    textDecoration: "none",
+    flexGrow: "1",
+  };
   return (
     <Box component="nav">
       <Drawer
@@ -44,19 +44,25 @@ function MobileNavigation({
           <List>
             <ListItem>
               <Link href={"/"} passHref style={itemLinkStyles}>
-                <ListItemButton sx={{ textAlign: "left", width: '100%' }}>
+                <ListItemButton sx={{ textAlign: "left", width: "100%" }}>
                   <ListItemText primary={"Shop"} />
                 </ListItemButton>
               </Link>
             </ListItem>
             <ListItem>
+              <Link href={"/blog"} passHref style={itemLinkStyles}>
+                <ListItemButton sx={{ textAlign: "left", width: "100%" }}>
+                  <ListItemText primary={"Blog"} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <ListItem>
               <Link href={"/contact"} passHref style={itemLinkStyles}>
-                <ListItemButton sx={{ textAlign: "left", width: '100%' }}>
+                <ListItemButton sx={{ textAlign: "left", width: "100%" }}>
                   <ListItemText primary={"Contact"} />
                 </ListItemButton>
               </Link>
             </ListItem>
-            
           </List>
         </Box>
       </Drawer>

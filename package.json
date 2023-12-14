@@ -14,6 +14,8 @@
     "@hookform/resolvers": "^3.3.2",
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.20",
+    "graphql-request": "^6.1.0",
+    "marked-react": "^2.0.0",
     "next": "14.0.3",
     "nodemailer": "^6.9.7",
     "react": "^18",

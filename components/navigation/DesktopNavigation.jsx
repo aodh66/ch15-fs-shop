@@ -1,14 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import {
-    AppBar,
-    Box,
-    IconButton,
-    MenuIcon,
-    Toolbar,
-    Typography,
-    Button,
-} from '@/components/mui'
+  AppBar,
+  Box,
+  IconButton,
+  MenuIcon,
+  Toolbar,
+  Typography,
+  Button,
+} from "@/components/mui";
 import { useTheme } from "@mui/material/styles";
 
 function DesktopNavigation({
@@ -45,6 +45,13 @@ function DesktopNavigation({
             Design App
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Button
+              sx={{ color: lightTextColor }}
+              component={Link}
+              href="/blog"
+            >
+              Blog
+            </Button>
             <Button
               sx={{ color: lightTextColor }}
               component={Link}
