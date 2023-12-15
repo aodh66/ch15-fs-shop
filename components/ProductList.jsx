@@ -6,13 +6,13 @@ import Product from "@/components/Product";
 import Paragraph from "@/components/Paragraph";
 
 const ProductList = (
-//     {
-//   deleteHandler = () => {},
-//   headingLevel = 2,
-//   canUpdate = false,
-//   canRemove = false,
-//   canBuy = true,
-// }
+    {
+  deleteHandler = () => {},
+  headingLevel = 2,
+  // canUpdate = false,
+  // canRemove = false,
+  // canBuy = true,
+}
 ) => {
 //   const { user } = useUser();
 //   const mutation = useAddToBasket();
@@ -31,8 +31,8 @@ const ProductList = (
         <ListItem key={product._id} component="li">
           <Product
             product={product}
-            // deleteHandler={deleteHandler}
-            // headingLevel={headingLevel}
+            deleteHandler={deleteHandler}
+            headingLevel={headingLevel}
             // canUpdate={canUpdate}
             // canRemove={canRemove}
             // canBuy={!!user && canBuy}

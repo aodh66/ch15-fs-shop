@@ -7,6 +7,8 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
+import { UIProvider } from "@/components/contexts/UI.context";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/lib/theme";
@@ -32,7 +34,9 @@ export default function App({ Component, pageProps }) {
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevtools />
           <Hydrate state={pageProps.dehydratedState}>
+            <UIProvider>
             <Component {...pageProps} />
+            </UIProvider>
           </Hydrate>
         </QueryClientProvider>
       </ThemeProvider>

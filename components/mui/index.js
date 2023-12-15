@@ -17,6 +17,9 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from '@mui/material/Alert'
+import Snackbar from '@mui/material/Snackbar';
 
 export {
   Button,
@@ -38,4 +41,7 @@ export {
   CardMedia,
   CardContent,
   CardActions,
+  CloseIcon,
+  Alert,
+  Snackbar,
 };

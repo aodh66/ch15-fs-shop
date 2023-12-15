@@ -18,18 +18,19 @@ import {
 import Heading from "@/components/Heading";
 // import { slugify, formatPrice } from "@/lib/utils/formatters";
 
+// ! DESCRIPTION PLACEHOLDER, LIKELY REMOVE LATER
 const ProductDisplay = ({
-  product: { _id, title, image, price, quantity } = {},
+  product: { _id, title, image, price, quantity, description } = {},
   deleteHandler = () => {
     console.log("no delete handler supplied");
   },
-  addToBasket = (id) => {
-    console.log("no addToBasket handler supplied", id);
-  },
+  // addToBasket = (id) => {
+  //   console.log("no addToBasket handler supplied", id);
+  // },
   headingLevel = 2,
-  canUpdate = false,
+  // canUpdate = false,
   canRemove = false,
-  canBuy=false
+  // canBuy=false
 }) => {
   return (
     <Card sx={{ width: "100%" }}>
@@ -60,6 +61,10 @@ const ProductDisplay = ({
           <Typography component="dd" sx={{ fontWeight: "bold" }}>
             {quantity} remaining
           </Typography>
+          {/* ! PLACEHOLDER DESCRIPTION */}
+          <Typography component="dd" sx={{ fontWeight: "bold" }}>
+            {description}
+          </Typography>
         </List>
       </CardContent>
       <CardActions sx={{ display: "grid", placeItems: "center" }}>
@@ -67,7 +72,7 @@ const ProductDisplay = ({
           {/* <Button href={`/products/${slugify(title, _id)}`} component={Link}>
             View
           </Button> */}
-          {canUpdate && (
+          {/* {canUpdate && (
             <IconButton
               aria-label="update"
               component={Link}
@@ -75,17 +80,17 @@ const ProductDisplay = ({
             >
               <EditIcon />
             </IconButton>
-          )}
+          )} */}
           {canRemove && (
             <IconButton aria-label="delete" onClick={() => deleteHandler(_id)}>
               <DeleteIcon />
             </IconButton>
           )}
-          {canBuy && (
+          {/* {canBuy && (
             <Button onClick={addToBasket}>
               Add to Basket
             </Button>
-          )}
+          )} */}
         </Box>
       </CardActions>
     </Card>
