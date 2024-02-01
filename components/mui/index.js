@@ -18,19 +18,19 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import CloseIcon from '@mui/icons-material/Close';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar';
+import CircularProgress from "@mui/material/CircularProgress";
 
 export {
   Button,
-  EditIcon,
   Container,
   AppBar,
   Box,
-  IconButton,
-  MenuIcon,
   Toolbar,
   Typography,
+  IconButton,
   Divider,
   List,
   ListItem,
@@ -41,7 +41,12 @@ export {
   CardMedia,
   CardContent,
   CardActions,
-  CloseIcon,
   Alert,
   Snackbar,
+  CircularProgress,
+  // Icons
+  CloseIcon,
+  DeleteIcon,
+  EditIcon,
+  MenuIcon,
 };

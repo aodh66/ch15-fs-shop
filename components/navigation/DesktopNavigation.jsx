@@ -42,7 +42,7 @@ function DesktopNavigation({
               color: lightTextColor,
             }}
           >
-            Design App
+            Eclectic Shop
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button
