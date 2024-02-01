@@ -13,7 +13,7 @@ import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { fetchOrder } from "@/lib/api-functions/server/orders/queries";
 import { STORAGE_KEY } from "@/lib/tq/orders/settings";
 
-import OrderForm from "@/components/forms/OrderForm";
+// import OrderForm from "@/components/forms/OrderForm";
 import { useUpdate } from "@/lib/tq/orders/mutations"
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -38,10 +38,10 @@ export default function UpdateOrder({ ssd }) {
       </Head>
       <Layout>
         <Heading component="h1">Edit Order</Heading>
-        <OrderForm
+        {/* <OrderForm
           order={ssd}
           submitHandler={submitHandler}
-        />
+        /> */}
       </Layout>
     </>
   );
