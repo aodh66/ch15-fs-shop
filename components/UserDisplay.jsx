@@ -10,7 +10,7 @@ import {
 } from "@/components/mui";
 // import Paragraph from "@/components/Paragraph";
 import Heading from "@/components/Heading";
-import { useUser } from '@auth0/nextjs-auth0/client';
+// import { useUser } from '@auth0/nextjs-auth0/client';
 
 const UserDisplay = ({ user }) => {
     // const { user } = useUser();
@@ -18,7 +18,7 @@ const UserDisplay = ({ user }) => {
 
   return (
     <>
-      <Heading>Profile</Heading>
+      {/* <Heading>Profile</Heading> */}
       <Card>
         <CardMedia sx={{ display: "grid", placeContent: "center" }}>
           {/* <Avatar alt={nickname} src={picture} referrerpolicy="no-referrer" /> */}
@@ -62,7 +62,7 @@ const UserDisplay = ({ user }) => {
         {/* <CardActions></CardActions> */}
       </Card>
       <hr />
-      <pre>{JSON.stringify(ssd, null, 2)}</pre>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
     </>
   );
 };
