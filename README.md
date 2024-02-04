@@ -38,3 +38,66 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+### Push RBAC permissions to token
+```
+const auth0 = require('auth0'); // 4.1.0
+// const {inspect} = require('util');
+// const map = require('array-map'); // latest
+/**
+* Handler that will be called during the execution of a PostLogin flow.
+*
+* @param {Event} event - Details about the user and the context in which they are logging in.
+* @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+*/
+exports.onExecutePostLogin = async (event, api) => {
+  const namespaces = ['http://localhost:3000', 'http://localhost:5000', 'https://ch15-fs-shop.vercel.app'];
+  // const namespace = 'http://localhost:3000';
+    // const namespace = '[http://localhost:3000](http://localhost:3000/)';
+    // const namespace = '[http://localhost:3000](http://localhost:3000/)';
+
+  const { user } = event
+    console.log(user)
+
+  // if (user[`${namespace}/permissions`]) {
+  //   return;
+  // }
+  // console.log(user)
+  const { ManagementClient } = auth0;
+
+  const management = new ManagementClient({
+    clientId: event.secrets.client_id,
+    clientSecret: event.secrets.client_secret,
+    domain: event.secrets.domain
+  });
+
+  const params = { id: user.user_id, page: 0, per_page: 50, include_totals: true };
+
+  try {
+    const resp = await management.users.getPermissions(params);
+
+
+    //  console.log('HERE', inspect(resp, { colors: true, depth: -1, showHidden: true }))
+
+    const {
+      data: {
+        permissions: userPermissions,
+      }
+    } = resp;
+
+    const permissionsArr = userPermissions.map((permission) => {
+      return permission.permission_name;
+    });
+
+    for (const namespace of namespaces) {
+      api?.idToken?.setCustomClaim?.(`${namespace}/permissions`, permissionsArr);
+      api?.accessToken?.setCustomClaim?.(`${namespace}/permissions`, permissionsArr);
+    }
+  } catch (err) {
+    return api.access.deny(err.message);
+  }
+
+}
+```
+
+### 
