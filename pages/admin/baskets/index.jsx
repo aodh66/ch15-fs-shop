@@ -1,30 +1,28 @@
-// import { useContext } from 'react'
-import Head from 'next/head'
-// import Image from 'next/image'
-// import { Inter } from 'next/font/google'
-// import { Button, EditIcon } from '@/components/mui'
-import Layout from '@/components/Layout';
-import Heading from '@/components/Heading';
-import Paragraph from '@/components/Paragraph';
+// import {useContext} from 'react'
+import Head from "next/head";
+import Link from "next/link";
+
+import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { getBasketsQuery } from "@/lib/api-functions/server/baskets/queries";
+import { STORAGE_KEY } from "@/lib/tq/baskets/settings";
+
+import { log } from "@/lib/utils/formatters";
+
+import Layout from "@/components/Layout";
+import Heading from "@/components/Heading";
 import QueryBoundaries from "@/components/QueryBoundaries";
 import BasketList from "@/components/BasketList";
-import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
-import { fetchBaskets } from "@/lib/api-functions/server/baskets/queries";
-import { STORAGE_KEY } from "@/lib/tq/baskets/settings";
+import { Button } from "@/components/mui";
+import { useDelete } from "@/lib/tq/orders/mutations";
 // import { UIContext } from '@/components/contexts/UI.context';
-import { Button, Link } from "@/components/mui";
-import { useDelete } from "@/lib/tq/baskets/mutations"
 
-// const inter = Inter({ subsets: ['latin'] })
 export default function AdminBasketList() {
-    const removeMutation = useDelete();
+  const removeMutation = useDelete();
 
-    const removeHandler = (id) => {
-        removeMutation.mutate(id)
-    }
-//   const {
-//     showMessage
-//   } = useContext(UIContext)
+  const removeHandler = (id) => {
+    // console.log('in handler', args);
+    removeMutation.mutate(id);
+  };
   return (
     <>
       <Head>
@@ -34,29 +32,37 @@ export default function AdminBasketList() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component='h1'>Admin Basket List</Heading>
-        {/* <Button component={Link} href="/admin/baskets/add" variant="contained">Add Basket</Button> */}
-        <QueryBoundaries>
-          <BasketList />
-        </QueryBoundaries>
-        <Paragraph>There should be baskets/a basket above here, or you borked the DB connection.</Paragraph>
+        <Heading component="h2">Baskets</Heading>
+        {/* <Button
+          variant="contained"
+          component={Link}
+          href={`/admin/orders/add`}
+        >
+          Add Order
+        </Button> */}
+        {/* <QueryBoundaries>
+          <OrderList deleteHandler={removeHandler} />
+        </QueryBoundaries> */}
       </Layout>
     </>
-  )
+  );
 }
 
-export async function getStaticProps(context) {
-  const baskets = await fetchBaskets().catch((err) => console.log(err));
+export async function getStaticProps() {
+  const orders = await getBasketsQuery().catch((err) => console.log(err));
+  // console.log("GSP Orders", orders);
+  // console.log("j", JSON.parse(JSON.stringify(orders)));
   const queryClient = new QueryClient();
-
+  // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'
   await queryClient.setQueryData(
     [STORAGE_KEY],
-    JSON.parse(JSON.stringify(baskets))
+    JSON.parse(JSON.stringify(orders))
   );
-
+  // log("dhy", dehydrate(queryClient));
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
     },
+    revalidate: 10,
   };
 }
