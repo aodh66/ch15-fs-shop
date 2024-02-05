@@ -1,4 +1,4 @@
-// import { useUser } from "@auth0/nextjs-auth0/client";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { useProducts } from "@/lib/tq/products/queries";
 // import { useAddToBasket } from "@/lib/tq/baskets/mutations";
 import { List, ListItem } from "@/components/mui";
@@ -9,12 +9,12 @@ const ProductList = (
     {
   deleteHandler = () => {},
   headingLevel = 2,
-  // canUpdate = false,
-  // canRemove = false,
+  canUpdate = false,
+  canRemove = false,
   // canBuy = true,
 }
 ) => {
-//   const { user } = useUser();
+  const { user } = useUser();
 //   const mutation = useAddToBasket();
 
   const { data: products } = useProducts();
@@ -33,8 +33,8 @@ const ProductList = (
             product={product}
             deleteHandler={deleteHandler}
             headingLevel={headingLevel}
-            // canUpdate={canUpdate}
-            // canRemove={canRemove}
+            canUpdate={canUpdate}
+            canRemove={canRemove}
             // canBuy={!!user && canBuy}
             // addToBasket={() => mutation.mutate(product._id)}
           />

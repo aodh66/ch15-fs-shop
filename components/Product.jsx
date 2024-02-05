@@ -16,7 +16,7 @@ import {
   Box,
 } from "@/components/mui";
 import Heading from "@/components/Heading";
-// import { slugify, formatPrice } from "@/lib/utils/formatters";
+import { slugify, formatPrice } from "@/lib/utils/formatters";
 
 // ! DESCRIPTION PLACEHOLDER, LIKELY REMOVE LATER
 const ProductDisplay = ({
@@ -28,7 +28,7 @@ const ProductDisplay = ({
   //   console.log("no addToBasket handler supplied", id);
   // },
   headingLevel = 2,
-  // canUpdate = false,
+  canUpdate = false,
   canRemove = false,
   // canBuy=false
 }) => {
@@ -69,10 +69,10 @@ const ProductDisplay = ({
       </CardContent>
       <CardActions sx={{ display: "grid", placeItems: "center" }}>
         <Box>
-          {/* <Button href={`/products/${slugify(title, _id)}`} component={Link}>
+          <Button href={`/products/${slugify(title, _id)}`} component={Link}>
             View
-          </Button> */}
-          {/* {canUpdate && (
+          </Button>
+          {canUpdate && (
             <IconButton
               aria-label="update"
               component={Link}
@@ -80,7 +80,7 @@ const ProductDisplay = ({
             >
               <EditIcon />
             </IconButton>
-          )} */}
+          )}
           {canRemove && (
             <IconButton aria-label="delete" onClick={() => deleteHandler(_id)}>
               <DeleteIcon />
