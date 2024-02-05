@@ -1,24 +1,18 @@
-// import { useUser } from "@auth0/nextjs-auth0/client";
-import { useBaskets } from "@/lib/tq/baskets/queries";
-// import { useAddToBasket } from "@/lib/tq/baskets/mutations";
+import { nanoid } from "nanoid";
 import { List, ListItem } from "@/components/mui";
-import Basket from "@/components/Basket";
+import Product from "@/components/Product";
 import Paragraph from "@/components/Paragraph";
+import { useUserBasket } from "@/lib/tq/baskets/queries";
 
-const BasketList = (
-    {
-  deleteHandler = () => {},
-  headingLevel = 2,
-  // canUpdate = false,
-  // canRemove = false,
-  // canBuy = true,
-}
-) => {
-//   const { user } = useUser();
-//   const mutation = useAddToBasket();
-
-  const { data: baskets } = useBaskets();
-  if (!baskets.length) return <Paragraph>No baskets to show</Paragraph>;
+const BasketList = ({
+  deleteHandler = () => {
+    console.log("No deleteHandler supplied");
+  },
+  headingLevel=1
+}) => {
+  const { data: basket } = useUserBasket();
+  const { items } = basket;
+  if (!items.length) return <Paragraph>No items to show</Paragraph>;
   return (
     <List
       component="ol"
@@ -27,16 +21,15 @@ const BasketList = (
         gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
       }}
     >
-      {baskets.map((basket) => (
-        <ListItem key={basket._id} component="li">
-          <Basket
-            basket={basket}
+      {items.map((item) => (
+        <ListItem key={nanoid()} component="li">
+          <Product
+            product={item}
             deleteHandler={deleteHandler}
             headingLevel={headingLevel}
-            // canUpdate={canUpdate}
-            // canRemove={canRemove}
-            // canBuy={!!user && canBuy}
-            // addToBasket={() => mutation.mutate(basket._id)}
+            canBuy={false}
+            canUpdate={false}
+            canRemove={true}
           />
         </ListItem>
       ))}

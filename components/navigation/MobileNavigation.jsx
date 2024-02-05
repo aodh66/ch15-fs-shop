@@ -13,6 +13,8 @@ import {
 
 import { useUser } from '@auth0/nextjs-auth0/client';
 
+import ShoppingCartDisplay from "@/components/BasketDisplay";
+
 function MobileNavigation({
   mobileOpen = false,
   handleDrawerToggle = () =>
@@ -41,7 +43,7 @@ function MobileNavigation({
       >
         <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
           <Typography variant="h6" sx={{ my: 2 }}>
-            Design Shop
+          Eclectic Shop {user && <ShoppingCartDisplay user={user} />}
           </Typography>
           <Divider />
           <List>
@@ -66,7 +68,7 @@ function MobileNavigation({
                 </ListItemButton>
               </Link>
             </ListItem>
-            {user && user["https://c13-fs-demo2.vercel.app/admin"] && (
+            {user && user["https://ch15-fs-shop.vercel.app/admin"] && (
               <ListItem>
                 <Link href={"/admin"} passHref style={itemLinkStyles}>
                   <ListItemButton sx={{ textAlign: "left", width: "100%" }}>

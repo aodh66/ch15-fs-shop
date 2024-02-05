@@ -22,6 +22,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar';
 import CircularProgress from "@mui/material/CircularProgress";
+import Avatar from "@mui/material/Avatar";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Paper from "@mui/material/Paper";
+import Badge from "@mui/material/Badge";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableFooter from "@mui/material/TableFooter";
 
 export {
   Button,
@@ -44,6 +56,8 @@ export {
   Alert,
   Snackbar,
   CircularProgress,
+  Badge,
+  ShoppingCartIcon,
   // Icons
   CloseIcon,
   DeleteIcon,

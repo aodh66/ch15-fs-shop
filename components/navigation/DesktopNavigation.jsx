@@ -11,6 +11,9 @@ import {
 } from "@/components/mui";
 import { useTheme } from "@mui/material/styles";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import QueryBoundaries from "@/components/QueryBoundaries";
+
+import ShoppingCartDisplay from "@/components/BasketDisplay";
 
 function DesktopNavigation({
   handleDrawerToggle = () =>
@@ -47,6 +50,16 @@ function DesktopNavigation({
             Eclectic Shop
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          {user && <ShoppingCartDisplay user={user} />}
+            {user && user["https://ch15-fs-shop.vercel.app/admin"] && (
+              <Button
+              sx={{ color: lightTextColor }}
+              component={Link}
+              href="/admin"
+            >
+              Admin
+            </Button>
+            )}
             <Button
               sx={{ color: lightTextColor }}
               component={Link}
