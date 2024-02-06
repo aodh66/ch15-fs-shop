@@ -63,4 +63,13 @@ export {
   DeleteIcon,
   EditIcon,
   MenuIcon,
+  Paper,
+  // List,
+  Table,
+  TableHead,
+  TableContainer,
+  TableBody,
+  TableCell,
+  TableRow,
+  TableFooter,
 };

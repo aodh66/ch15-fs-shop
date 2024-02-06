@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+const {
+  STRIPE_PUBLIC_KEY,
+  HOST,
+} = process.env;
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -11,6 +16,10 @@ const nextConfig = {
       },
     ],
   },
-}
+  env: {
+    STRIPE_PUBLIC_KEY,
+    HOST,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

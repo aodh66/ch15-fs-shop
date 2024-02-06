@@ -18,6 +18,16 @@ import {
 import Heading from "@/components/Heading";
 // import { slugify, formatPrice } from "@/lib/utils/formatters";
 
+// owner: {
+//   type: String, // Auth0 ID
+//   required: true,
+// },
+// items: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+// receiptURL: {
+//   type: String,  // Stripe receipt url
+//   required: true,
+// },
+
 // ! DESCRIPTION PLACEHOLDER, LIKELY REMOVE LATER
 const ProductDisplay = ({
   product: { _id, title, image, price, quantity, description } = {},
