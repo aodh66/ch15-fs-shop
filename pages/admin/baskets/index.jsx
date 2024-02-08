@@ -32,7 +32,7 @@ export default function AdminBasketList() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Baskets</Heading>
+        <Heading component="h2">Admin List Baskets</Heading>
         {/* <Button
           variant="contained"
           component={Link}

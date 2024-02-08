@@ -16,21 +16,23 @@ import {
   Box,
 } from "@/components/mui";
 import Heading from "@/components/Heading";
+import Product from "@/components/Product";
+import { ListItem } from "@/components/mui";
 // import { slugify, formatPrice } from "@/lib/utils/formatters";
 
 // owner: {
 //   type: String, // Auth0 ID
 //   required: true,
 // },
-// items: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+// items: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
 // receiptURL: {
 //   type: String,  // Stripe receipt url
 //   required: true,
 // },
 
 // ! DESCRIPTION PLACEHOLDER, LIKELY REMOVE LATER
-const ProductDisplay = ({
-  product: { _id, title, image, price, quantity, description } = {},
+const OrderDisplay = ({
+  order: { _id, owner, items, receiptURL } = {},
   deleteHandler = () => {
     console.log("no delete handler supplied");
   },
@@ -44,49 +46,41 @@ const ProductDisplay = ({
 }) => {
   return (
     <Card sx={{ width: "100%" }}>
-      <CardMedia sx={{ display: "grid", placeItems: "center" }}>
-        <Image alt={title} src={image} width="500" height="500" />
-      </CardMedia>
       <CardContent>
-        <Heading component={`h${headingLevel}`} sx={{ textAlign: "center" }}>
-          {title}
-        </Heading>
         <List
           component="dl"
           sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            display: "flex",
+            flexDirection: "column",
             gap: "1em",
           }}
-        >
-          <Typography component="dt" sx={{ textAlign: "right" }}>
-            Price
+          >
+          <Typography component="dt" sx={{ textAlign: "left", fontWeight: "bold" }}>
+            ID: {_id}
           </Typography>
-          {/* <Typography component="dd" sx={{ fontWeight: "bold" }}>
-            {formatPrice(toDecimal(dinero({ amount: price, currency: GBP})))}
-          </Typography> */}
-          <Typography component="dt" sx={{ textAlign: "right" }}>
-            Quantity
+          {/* <Typography component="dt" sx={{ textAlign: "left" }}>
+          Items: {items}
+        </Typography> */}
+          <Typography component="dd">
+        Owner: {owner}
+            
           </Typography>
-          <Typography component="dd" sx={{ fontWeight: "bold" }}>
-            {quantity} remaining
-          </Typography>
+          <Link href={receiptURL} sx={{ fontWeight: "bold" }}>
+          Receipt URL: {receiptURL}
+          </Link>
           {/* ! PLACEHOLDER DESCRIPTION */}
-          <Typography component="dd" sx={{ fontWeight: "bold" }}>
-            {description}
-          </Typography>
         </List>
       </CardContent>
       <CardActions sx={{ display: "grid", placeItems: "center" }}>
         <Box>
-          {/* <Button href={`/products/${slugify(title, _id)}`} component={Link}>
+          {/* <Button href={`/orders/${slugify(title, _id)}`} component={Link}>
             View
           </Button> */}
           {/* {canUpdate && (
             <IconButton
               aria-label="update"
               component={Link}
-              href={`/admin/products/update/${_id}`}
+              href={`/admin/orders/update/${_id}`}
             >
               <EditIcon />
             </IconButton>
@@ -107,4 +101,4 @@ const ProductDisplay = ({
   );
 };
 
-export default ProductDisplay;
+export default OrderDisplay;

@@ -2,9 +2,11 @@
 import Head from "next/head";
 import Link from "next/link";
 
+import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
+
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { getUserOrdersQuery } from "@/lib/api-functions/server/orders/queries";
-import { STORAGE_KEY } from "@/lib/tq/orders/settings";
+import { getOrdersQuery } from "@/lib/api-functions/server/orders/queries";
+import { USER_ORDERS_STORAGE_KEY, STORAGE_KEY } from "@/lib/tq/orders/settings";
 
 import { log } from "@/lib/utils/formatters";
 
@@ -32,7 +34,7 @@ export default function AdminOrderList() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Orders</Heading>
+        <Heading component="h2">Admin List Orders</Heading>
         {/* <Button
           variant="contained"
           component={Link}
@@ -48,21 +50,24 @@ export default function AdminOrderList() {
   );
 }
 
-export async function getStaticProps() {
-  const orders = await getUserOrdersQuery().catch((err) => console.log(err));
-  // console.log("GSP Orders", orders);
-  // console.log("j", JSON.parse(JSON.stringify(orders)));
-  const queryClient = new QueryClient();
-  // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'
-  await queryClient.setQueryData(
-    [STORAGE_KEY],
-    JSON.parse(JSON.stringify(orders))
-  );
-  // log("dhy", dehydrate(queryClient));
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-    revalidate: 10,
-  };
-}
+export const getServerSideProps = withPageAuthRequired({
+  async getServerSideProps(context) {
+    // Getting user data from Auth0
+    const { user } = await getSession(context.req, context.res);
+
+    const orders = await getOrdersQuery().catch((err) => console.log(err));
+
+    const queryClient = new QueryClient();
+
+    await queryClient.setQueryData(
+      [STORAGE_KEY],
+      JSON.parse(JSON.stringify(orders))
+    );
+
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  },
+});
