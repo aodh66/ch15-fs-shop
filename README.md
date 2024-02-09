@@ -1,6 +1,6 @@
 # Eclectic Shop
 Welcome to the Eclectic Shop, a hypothetical SPA fullstack shop project.
-The Eclectic Shop has a frontend built on Next.js and Material-UI. MongoDB and Hygraph handles the main and blog database side of things, while Tanstack Query and Axios are used to communicate with it. Stripe handles payments. Nodemailer handles things like emailing customers and last but not least Auth0 is used for authentication.
+The Eclectic Shop has a frontend built on Next.js and Material-UI. MongoDB and Hygraph handles the main and blog database side of things, while Tanstack Query and Axios are used to communicate with them. Stripe handles payments. Nodemailer handles things like emailing customers. Last but not least Auth0 is used for authentication.
 
 [Online deployed link](https://ch15-fs-shop.vercel.app/)
 
