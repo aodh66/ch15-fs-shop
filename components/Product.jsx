@@ -61,7 +61,6 @@ const ProductDisplay = ({
           <Typography component="dd" sx={{ fontWeight: "bold" }}>
             {quantity} remaining
           </Typography>
-          {/* ! PLACEHOLDER DESCRIPTION */}
           <Typography component="dd" sx={{ fontWeight: "bold" }}>
             {description}
           </Typography>

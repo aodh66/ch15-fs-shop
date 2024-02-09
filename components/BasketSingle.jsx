@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   Typography,
   List,
@@ -8,10 +7,11 @@ import {
   IconButton,
   DeleteIcon,
   Box,
+  ListItem
 } from "@/components/mui";
 
-const OrderDisplay = ({
-  order: { _id, owner, receiptURL } = {},
+const BasketSingle = ({
+  basket: { _id, owner, items } = {},
   deleteHandler = () => {
     console.log("no delete handler supplied");
   },
@@ -35,9 +35,13 @@ const OrderDisplay = ({
         Owner: {owner}
             
           </Typography>
-          <Link href={receiptURL} sx={{ fontWeight: "bold" }}>
-          Receipt URL: {receiptURL}
-          </Link>
+          {items.map((items) => (
+        <ListItem key={items._id} component="li">
+       <Typography component="dd">
+          Item: {items}
+          </Typography>
+        </ListItem>
+      ))}
         </List>
       </CardContent>
       <CardActions sx={{ display: "grid", placeItems: "center" }}>
@@ -53,4 +57,4 @@ const OrderDisplay = ({
   );
 };
 
-export default OrderDisplay;
+export default BasketSingle;

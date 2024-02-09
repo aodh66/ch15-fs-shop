@@ -1,40 +1,23 @@
 import React, { useContext } from "react";
 import Header from "@/components/Header";
-import Paragraph from "@/components/Paragraph"
+import Paragraph from "@/components/Paragraph";
 import {
   Container,
   Alert,
   Snackbar,
   IconButton,
   CloseIcon,
-} from "@/components/mui"
+} from "@/components/mui";
 import { UIContext } from "./contexts/UI.context";
 
-function Layout({children}) {
-    const {
-      isOpen: open,
-      severity,
-      onClose: handleClose,
-      message,
-      hideDuration,
-    } = useContext(UIContext);
-  
-    // const action = useCallback((props) => {
-    //   console.log(props);
-    //   return (
-    //     <>
-    //       <IconButton
-    //         size="small"
-    //         aria-label="close"
-    //         color="inherit"
-    //         onClick={handleClose}
-    //       >
-    //         <CloseIcon fontSize="small" />
-    //       </IconButton>
-    //     </>
-    //   );
-    // }, [handleClose]);
-  
+function Layout({ children }) {
+  const {
+    isOpen: open,
+    severity,
+    onClose: handleClose,
+    message,
+    hideDuration,
+  } = useContext(UIContext);
 
   return (
     <>
@@ -42,18 +25,16 @@ function Layout({children}) {
         <Header />
       </header>
       <main>
-        <Container maxWidth="xl">
-             {children}
-        </Container>
+        <Container maxWidth="xl">{children}</Container>
       </main>
-        <Snackbar
-          open={open}
-          autoHideDuration={hideDuration}
-          onClose={handleClose}
-        >
-          <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
-            <Paragraph sx={{ margin: "0px"}}>{message}</Paragraph>
-            <IconButton
+      <Snackbar
+        open={open}
+        autoHideDuration={hideDuration}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
+          <Paragraph sx={{ margin: "0px" }}>{message}</Paragraph>
+          <IconButton
             size="small"
             aria-label="close"
             color="inherit"
@@ -61,11 +42,10 @@ function Layout({children}) {
           >
             <CloseIcon fontSize="small" />
           </IconButton>
-          </Alert>
-        </Snackbar>
+        </Alert>
+      </Snackbar>
     </>
   );
 }
 
 export default Layout;
-

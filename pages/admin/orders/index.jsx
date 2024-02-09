@@ -1,22 +1,17 @@
 // import {useContext} from 'react'
 import Head from "next/head";
-import Link from "next/link";
 
-import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { getOrdersQuery } from "@/lib/api-functions/server/orders/queries";
 import { USER_ORDERS_STORAGE_KEY, STORAGE_KEY } from "@/lib/tq/orders/settings";
 
-import { log } from "@/lib/utils/formatters";
-
 import Layout from "@/components/Layout";
 import Heading from "@/components/Heading";
 import QueryBoundaries from "@/components/QueryBoundaries";
 import OrderList from "@/components/OrderList";
-import { Button } from "@/components/mui";
 import { useDelete } from "@/lib/tq/orders/mutations";
-// import { UIContext } from '@/components/contexts/UI.context';
 
 export default function AdminOrderList() {
   const removeMutation = useDelete();
@@ -35,13 +30,6 @@ export default function AdminOrderList() {
       </Head>
       <Layout>
         <Heading component="h2">Admin List Orders</Heading>
-        {/* <Button
-          variant="contained"
-          component={Link}
-          href={`/admin/orders/add`}
-        >
-          Add Order
-        </Button> */}
         <QueryBoundaries>
           <OrderList deleteHandler={removeHandler} />
         </QueryBoundaries>
@@ -52,9 +40,6 @@ export default function AdminOrderList() {
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
-    // Getting user data from Auth0
-    const { user } = await getSession(context.req, context.res);
-
     const orders = await getOrdersQuery().catch((err) => console.log(err));
 
     const queryClient = new QueryClient();

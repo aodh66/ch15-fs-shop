@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-// import CircularProgress from "@mui/material/CircularProgress";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, Button } from "@mui/material";
@@ -21,7 +20,6 @@ const defaults = {
 };
 
 export default function ContactForm({ submitHandler }) {
-  // console.log(car);
 
   const {
     handleSubmit,

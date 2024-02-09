@@ -13,8 +13,6 @@ import {
   TableFooter,
   Typography,
 } from "@/components/mui";
-// import Product from "@/components/Product";
-// import Paragraph from "@/components/Paragraph";
 import { useUserBasket } from "@/lib/tq/baskets/queries";
 import { formatPrice } from "@/lib/utils/formatters";
 
@@ -48,9 +46,6 @@ const CheckoutSummary = () => {
                   toDecimal(dinero({ amount: price, currency: GBP }))
                 )}
               </TableCell>
-              {/* <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>

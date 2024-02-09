@@ -15,8 +15,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const ShoppingCartDisplay = () => {
   const { data: basket } = useUserBasket();
-//   if (!products.length) return <Paragraph>No products to show</Paragraph>;
-//   console.log("b", basket, basket?.items?.length);
   return (
     <IconButton aria-label="cart" href="/basket" component={Link}>
       <StyledBadge 

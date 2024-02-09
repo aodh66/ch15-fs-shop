@@ -2,20 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { 
-    Button,
     List,
     ListItem,
-    ListItemButton,
-    ListItemText,
     Card,
     CardMedia,
     CardContent,
     CardActions,
-    // Typography
  } from '@/components/mui'
 import Layout from '@/components/Layout'
 import Heading from '@/components/Heading';
-// import Paragraph from '@/components/Paragraph';
 import { AllPosts } from '@/lib/hygraph/queries';
 
 export default function Blog({ ssd=[] }) {

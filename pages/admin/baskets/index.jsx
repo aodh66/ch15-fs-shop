@@ -1,20 +1,16 @@
-// import {useContext} from 'react'
 import Head from "next/head";
-import Link from "next/link";
+
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { getBasketsQuery } from "@/lib/api-functions/server/baskets/queries";
+import { getAllBasketsQuery } from "@/lib/api-functions/server/baskets/queries";
 import { STORAGE_KEY } from "@/lib/tq/baskets/settings";
-
-import { log } from "@/lib/utils/formatters";
+import QueryBoundaries from "@/components/QueryBoundaries";
+import Basket from "@/components/Basket";
 
 import Layout from "@/components/Layout";
 import Heading from "@/components/Heading";
-import QueryBoundaries from "@/components/QueryBoundaries";
-import BasketList from "@/components/BasketList";
-import { Button } from "@/components/mui";
-import { useDelete } from "@/lib/tq/orders/mutations";
-// import { UIContext } from '@/components/contexts/UI.context';
+import { useDelete } from "@/lib/tq/baskets/mutations";
 
 export default function AdminBasketList() {
   const removeMutation = useDelete();
@@ -33,36 +29,29 @@ export default function AdminBasketList() {
       </Head>
       <Layout>
         <Heading component="h2">Admin List Baskets</Heading>
-        {/* <Button
-          variant="contained"
-          component={Link}
-          href={`/admin/orders/add`}
-        >
-          Add Order
-        </Button> */}
-        {/* <QueryBoundaries>
-          <OrderList deleteHandler={removeHandler} />
-        </QueryBoundaries> */}
+        <QueryBoundaries>
+          <Basket deleteHandler={removeHandler} />
+        </QueryBoundaries>
       </Layout>
     </>
   );
 }
 
-export async function getStaticProps() {
-  const orders = await getBasketsQuery().catch((err) => console.log(err));
-  // console.log("GSP Orders", orders);
-  // console.log("j", JSON.parse(JSON.stringify(orders)));
-  const queryClient = new QueryClient();
-  // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'
-  await queryClient.setQueryData(
-    [STORAGE_KEY],
-    JSON.parse(JSON.stringify(orders))
-  );
-  // log("dhy", dehydrate(queryClient));
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-    revalidate: 10,
-  };
-}
+export const getServerSideProps = withPageAuthRequired({
+  async getServerSideProps(context) {
+    const baskets = await getAllBasketsQuery().catch((err) => console.log(err));
+
+    const queryClient = new QueryClient();
+
+    await queryClient.setQueryData(
+      [STORAGE_KEY],
+      JSON.parse(JSON.stringify(baskets))
+    );
+
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  },
+});

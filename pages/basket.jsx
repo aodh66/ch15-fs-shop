@@ -1,6 +1,5 @@
 // import {useContext} from 'react'
 import Head from "next/head";
-import Link from "next/link";
 
 import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
 
@@ -9,15 +8,11 @@ import { getUserBasketQuery } from "@/lib/api-functions/server/baskets/queries";
 import { useRemoveFromBasket } from "@/lib/tq/baskets/mutations";
 import { USER_BASKET_STORAGE_KEY } from "@/lib/tq/baskets/settings";
 
-import { log } from "@/lib/utils/formatters";
-
 import Layout from "@/components/Layout";
 import Heading from "@/components/Heading";
 import QueryBoundaries from "@/components/QueryBoundaries";
 import BasketList from "@/components/BasketList";
 import BasketTotal from "@/components/BasketTotal";
-import { Button } from "@/components/mui";
-import Paragraph from "@/components/Paragraph";
 
 export default function BasketPage({ basket }) {
   const mutation = useRemoveFromBasket();

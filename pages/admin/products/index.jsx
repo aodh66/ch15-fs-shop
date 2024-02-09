@@ -1,25 +1,18 @@
-// import { useContext } from 'react'
 import Head from 'next/head'
 import Link from "next/link";
 
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
-// import Image from 'next/image'
-// import { Inter } from 'next/font/google'
-// import { Button, EditIcon } from '@/components/mui'
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
-import Paragraph from '@/components/Paragraph';
 import QueryBoundaries from "@/components/QueryBoundaries";
 import ProductList from "@/components/ProductList";
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { fetchProducts } from "@/lib/api-functions/server/products/queries";
 import { STORAGE_KEY } from "@/lib/tq/products/settings";
-// import { UIContext } from '@/components/contexts/UI.context';
 import { Button, 
   // Link
  } from "@/components/mui";
 import { useDelete } from "@/lib/tq/products/mutations"
-// import { log } from "@/lib/utils/formatters";
 
 import { checkPermissions } from "@/lib/api-functions/server/utils";
 import settings from "@/lib/api-functions/server/permissions";
@@ -32,7 +25,6 @@ export default function AdminProductList({ user }) {
     settings.identifier,
     settings.permissions.products.create
   );
-  // console.log("🚀 ~ AdminProductList ~ canAdd:", canAdd)
 
   const canUpdate = checkPermissions(
     user,
@@ -90,7 +82,6 @@ export const getServerSideProps = withPageAuthRequired({
     const products = await fetchProducts().catch((err) => console.log(err));
 
     const queryClient = new QueryClient();
-    // If this was remote we'd use 'prefetchQuery' but as we know it we use 'setQueryData'
     await queryClient.setQueryData(
       [STORAGE_KEY],
       JSON.parse(JSON.stringify(products))

@@ -1,24 +1,13 @@
-// import { useContext } from 'react'
 import Head from 'next/head'
-// import Image from 'next/image'
-// import { Inter } from 'next/font/google'
-import Link from 'next/link'
-import { Button, EditIcon } from '@/components/mui'
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
-import Paragraph from '@/components/Paragraph';
 import QueryBoundaries from "@/components/QueryBoundaries";
 import ProductList from "@/components/ProductList";
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { fetchProducts } from "@/lib/api-functions/server/products/queries";
 import { STORAGE_KEY } from "@/lib/tq/products/settings";
-// import { UIContext } from '@/components/contexts/UI.context';
 
-// const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
-  // const {
-  //   showMessage
-  // } = useContext(UIContext)
   return (
     <>
       <Head>
@@ -29,15 +18,10 @@ export default function Home() {
       </Head>
       <Layout>
         <Heading component='h2'>Products</Heading>
-        
-        {/* <Button variant="contained" onClick={() => showMessage({
-          type: 'error',
-          string: 'You clicked the toast test button.'
-        })}><EditIcon />Toast Test Button</Button> */}
         <QueryBoundaries>
           <ProductList />
         </QueryBoundaries>
-        <Paragraph>There should be products above here, or you borked the DB connection.</Paragraph>
+        {/* <Paragraph>There should be products above here, or you borked the DB connection.</Paragraph> */}
       </Layout>
     </>
   )

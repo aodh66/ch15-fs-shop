@@ -1,28 +1,13 @@
-// import { useContext } from 'react'
 import Head from 'next/head'
 import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
-// import Image from 'next/image'
-// import { Inter } from 'next/font/google'
-import Link from 'next/link'
-import { Button, EditIcon } from '@/components/mui'
-import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import Paragraph from '@/components/Paragraph';
 import QueryBoundaries from "@/components/QueryBoundaries";
-// import ProductList from "@/components/ProductList";
 import UserDisplay from "@/components/UserDisplay";
-import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
-import { fetchProducts } from "@/lib/api-functions/server/products/queries";
-import { STORAGE_KEY } from "@/lib/tq/products/settings";
-// import { UIContext } from '@/components/contexts/UI.context';
+import Layout from '@/components/Layout';
 
-
-// const inter = Inter({ subsets: ['latin'] })
 export default function ProfilePage({ ssd, sess }) {
 
-  // const {
-  //   showMessage
-  // } = useContext(UIContext)
   return (
     <>
       <Head>
@@ -33,16 +18,11 @@ export default function ProfilePage({ ssd, sess }) {
       </Head>
       <Layout>
         <Heading component='h2'>Profile</Heading>
-        
-        {/* <Button variant="contained" onClick={() => showMessage({
-          type: 'error',
-          string: 'You clicked the toast test button.'
-        })}><EditIcon />Toast Test Button</Button> */}
         <QueryBoundaries>
           <UserDisplay user={ssd} />
         </QueryBoundaries>
-        <pre>{JSON.stringify(sess, null, 2)}</pre>
-        <Paragraph>There should be a profile above here, or you borked the Auth0 connection.</Paragraph>
+        {/* <pre>{JSON.stringify(sess, null, 2)}</pre> */}
+        {/* <Paragraph>There should be a profile above here, or you borked the Auth0 connection.</Paragraph> */}
       </Layout>
     </>
   )

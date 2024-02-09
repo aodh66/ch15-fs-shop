@@ -11,7 +11,6 @@ import {
 } from "@/components/mui";
 import { useTheme } from "@mui/material/styles";
 import { useUser } from '@auth0/nextjs-auth0/client';
-import QueryBoundaries from "@/components/QueryBoundaries";
 
 import ShoppingCartDisplay from "@/components/BasketDisplay";
 
@@ -20,7 +19,6 @@ function DesktopNavigation({
     console.log("no handleDrawerToggle function provided"),
 }) {
   const theme = useTheme();
-  // console.log(theme);
   const { user } = useUser();
   const lightTextColor = theme.palette.common.white;
   return (

@@ -4,24 +4,16 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardActions,
-  Avatar,
   List,
 } from "@/components/mui";
-// import Paragraph from "@/components/Paragraph";
-import Heading from "@/components/Heading";
-// import { useUser } from '@auth0/nextjs-auth0/client';
 
 const UserDisplay = ({ user }) => {
-    // const { user } = useUser();
   const { nickname, name, picture, email, sub } = user;
 
   return (
     <>
-      {/* <Heading>Profile</Heading> */}
       <Card>
         <CardMedia sx={{ display: "grid", placeContent: "center" }}>
-          {/* <Avatar alt={nickname} src={picture} referrerpolicy="no-referrer" /> */}
           <Image
             alt={nickname}
             src={picture}
@@ -59,9 +51,9 @@ const UserDisplay = ({ user }) => {
             </Typography>
           </List>
         </CardContent>
-        {/* <CardActions></CardActions> */}
       </Card>
       <hr />
+      <Typography component="dd" sx={{ fontWeight: "bold" }}>Your Data</Typography>
       <pre>{JSON.stringify(user, null, 2)}</pre>
     </>
   );

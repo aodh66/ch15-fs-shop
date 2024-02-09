@@ -22,8 +22,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar';
 import CircularProgress from "@mui/material/CircularProgress";
-import Avatar from "@mui/material/Avatar";
-import ButtonGroup from '@mui/material/ButtonGroup';
 import Paper from "@mui/material/Paper";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
