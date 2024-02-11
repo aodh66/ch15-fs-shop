@@ -33,12 +33,12 @@ const ProductDisplay = ({
   canBuy=false
 }) => {
   return (
-    <Card sx={{ width: "100%" }}>
+    <Card sx={{ width: "100%", backgroundColor: "hsla(90, 0%, 0%, 0.5)" }}>
       <CardMedia sx={{ display: "grid", placeItems: "center" }}>
         <Image alt={title} src={image} width="500" height="500" />
       </CardMedia>
       <CardContent>
-        <Heading component={`h${headingLevel}`} sx={{ textAlign: "center" }}>
+        <Heading component={`h${headingLevel}`} sx={{ textAlign: "center", color: "white" }}>
           {title}
         </Heading>
         <List
@@ -49,26 +49,26 @@ const ProductDisplay = ({
             gap: "1em",
           }}
         >
-          <Typography component="dt" sx={{ textAlign: "right" }}>
+          <Typography component="dt" sx={{ textAlign: "right", color: "white" }}>
             Price
           </Typography>
-          <Typography component="dd" sx={{ fontWeight: "bold" }}>
+          <Typography component="dd" sx={{ fontWeight: "bold", color: "white" }}>
             {formatPrice(toDecimal(dinero({ amount: price, currency: GBP})))}
           </Typography>
-          <Typography component="dt" sx={{ textAlign: "right" }}>
+          <Typography component="dt" sx={{ textAlign: "right", color: "white" }}>
             Quantity
           </Typography>
-          <Typography component="dd" sx={{ fontWeight: "bold" }}>
+          <Typography component="dd" sx={{ fontWeight: "bold", color: "white" }}>
             {quantity} remaining
           </Typography>
-          <Typography component="dd" sx={{ fontWeight: "bold" }}>
+          <Typography component="dd" sx={{ fontWeight: "bold", color: "white" }}>
             {description}
           </Typography>
         </List>
       </CardContent>
       <CardActions sx={{ display: "grid", placeItems: "center" }}>
         <Box>
-          <Button href={`/products/${slugify(title, _id)}`} component={Link}>
+          <Button href={`/products/${slugify(title, _id)}`} component={Link} color="secondary">
             View
           </Button>
           {canUpdate && (
@@ -86,7 +86,7 @@ const ProductDisplay = ({
             </IconButton>
           )}
           {canBuy && (
-            <Button onClick={addToBasket}>
+            <Button onClick={addToBasket} color="secondary">
               Add to Basket
             </Button>
           )}

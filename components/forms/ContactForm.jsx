@@ -112,6 +112,7 @@ export default function ContactForm({ submitHandler }) {
           variant="contained"
           sx={{ mr: 2 }}
           disabled={!isDirty}
+          color="secondary"
         >
           Reset
         </Button>
@@ -120,6 +121,7 @@ export default function ContactForm({ submitHandler }) {
           primary="true"
           variant="contained"
           disabled={isSubmitting || !isDirty || (isDirty && !isValid)}
+          color="secondary"
         >
           Submit
         </Button>

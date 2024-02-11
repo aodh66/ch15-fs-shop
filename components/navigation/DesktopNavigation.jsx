@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image'
 import {
   AppBar,
   Box,
@@ -11,6 +12,7 @@ import {
 } from "@/components/mui";
 import { useTheme } from "@mui/material/styles";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import logo from "@/images/shop.svg";
 
 import ShoppingCartDisplay from "@/components/BasketDisplay";
 
@@ -34,6 +36,12 @@ function DesktopNavigation({
           >
             <MenuIcon />
           </IconButton>
+          <Image
+      src={logo}
+      width={50}
+      height={50}
+      alt="Site Logo"
+    />
           <Typography
             variant="h6"
             component={Link}
