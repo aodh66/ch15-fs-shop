@@ -12,14 +12,14 @@ const UserDisplay = ({ user }) => {
 
   return (
     <>
-      <Card>
+      <Card sx={{ backgroundColor: "hsla(90, 0%, 0%, 0.5)", color: "white"}}>
         <CardMedia sx={{ display: "grid", placeContent: "center" }}>
           <Image
             alt={nickname}
             src={picture}
             width="200"
             height="200"
-            style={{ borderRadius: "50%" }}
+            style={{ borderRadius: "50%", marginTop: "2em"}}
           />
         </CardMedia>
         <CardContent>
@@ -53,8 +53,11 @@ const UserDisplay = ({ user }) => {
         </CardContent>
       </Card>
       <hr />
+      <Card sx={{ width: "100%", backgroundColor: "hsla(90, 0%, 0%, 0.5)", color: "white", padding: "1em"}}>
+
       <Typography component="dd" sx={{ fontWeight: "bold" }}>Your Data</Typography>
       <pre>{JSON.stringify(user, null, 2)}</pre>
+      </Card>
     </>
   );
 };

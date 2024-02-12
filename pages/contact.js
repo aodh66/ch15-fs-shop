@@ -20,7 +20,7 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component='h2'>Contact Us</Heading>
+        <Heading component='h2' sx={{ color: "white" }}>Contact Us</Heading>
         <ContactForm submitHandler={sendEmail}/>
       </Layout>
     </div>

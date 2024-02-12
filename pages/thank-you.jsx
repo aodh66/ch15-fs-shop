@@ -25,8 +25,8 @@ export default function ThankYouPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component="h2">Thank you for your order at the Eclectic Shop!</Heading>
-        <Paragraph>
+        <Heading component="h2" sx={{ color: "white" }}>Thank you for your order at the Eclectic Shop!</Heading>
+        <Paragraph sx={{ color: "white" }}>
           You can view a copy of your receipt <a href={receiptURL} target="_blank" >here</a>
         </Paragraph>
       </Layout>

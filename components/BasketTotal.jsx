@@ -17,10 +17,10 @@ const BasketTotal = ({}) => {
     <>
       {basket.items.length ? (
         <>
-          <Button component={Link} href="/checkout" variant="contained">
+          <Button component={Link} href="/checkout" variant="contained" color="secondary">
             Checkout
           </Button>
-          <Paragraph>Total: {formatPrice(toDecimal(basketTotal))}</Paragraph>
+          <Paragraph sx={{ color: "white" }} >Total: {formatPrice(toDecimal(basketTotal))}</Paragraph>
         </>
       ) : null}
     </>

@@ -12,7 +12,7 @@ import {
 import Layout from '@/components/Layout'
 import Heading from '@/components/Heading';
 import { AllPosts } from '@/lib/hygraph/queries';
-import backgroundImg from "@/images/mountain_bright.jpg";
+import backgroundImg from "@/images/mountain_color.jpg";
 
 export default function Blog({ ssd=[] }) {
     // console.log("ssd", ssd);
@@ -29,7 +29,7 @@ export default function Blog({ ssd=[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component='h2'>Blog List</Heading>
+        <Heading component='h2' sx={{ color: "white" }} >Blog Articles</Heading>
         <List component={"ol"} sx={{ listStyle: "none" }}>
           {ssd.map(({ id, title, slug, heroImage: { url } }) => (
             <ListItem key={id}>

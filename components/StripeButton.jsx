@@ -59,7 +59,7 @@ const StripeButton = () => {
       zipCode={false}
       token={onToken}
     >
-      <Button variant="contained">Pay with Stripe</Button>
+      <Button variant="contained" color="secondary">Pay with Stripe</Button>
     </StripeCheckout>
   );
 };

@@ -31,9 +31,9 @@ export default function BlogPost({ ssd={} }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading component='h2'>Single Post</Heading>
-        <Card component={"article"} sx={{ width: "100%", backgroundColor: "hsla(90, 0%, 0%, 0.5)" }}>
-              <CardMedia sx={{ display: "grid", placeContent: "center" }}>
+        {/* <Heading component='h2'>Single Post</Heading> */}
+        <Card component={"article"} sx={{ width: "100%", backgroundColor: "hsla(90, 0%, 0%, 0.5)", color: "white" }}>
+              <CardMedia sx={{ display: "grid", placeContent: "center", marginTop: "2em" }}>
                 <Image alt={title} src={url} width="300" height="200" />
               </CardMedia>
               <CardContent>

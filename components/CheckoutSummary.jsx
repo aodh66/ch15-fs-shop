@@ -24,12 +24,12 @@ const CheckoutSummary = () => {
   }, dinero({ amount: 0, currency: GBP }));
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ backgroundColor: "hsla(90, 0%, 0%, 0.5)" }}>
       <Table sx={{ minWidth: 650 }} aria-label="Order Details">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Price</TableCell>
+            <TableCell sx={{ color: "white" }}>Name</TableCell>
+            <TableCell sx={{ color: "white" }}>Price</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,10 +38,10 @@ const CheckoutSummary = () => {
               key={nanoid()}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx={{ color: "white" }}>
                 {title}
               </TableCell>
-              <TableCell align="right">
+              <TableCell align="right" sx={{ color: "white" }}>
                 {formatPrice(
                   toDecimal(dinero({ amount: price, currency: GBP }))
                 )}
@@ -52,10 +52,10 @@ const CheckoutSummary = () => {
         <TableFooter>
           <TableRow>
             <TableCell align="right" component="th" scope="row">
-              <Typography>Total</Typography>
+              <Typography sx={{ color: "white" }}>Total</Typography>
             </TableCell>
             <TableCell>
-              <Typography>{formatPrice(toDecimal(basketTotal))}</Typography>
+              <Typography sx={{ color: "white" }}>{formatPrice(toDecimal(basketTotal))}</Typography>
             </TableCell>
           </TableRow>
         </TableFooter>
