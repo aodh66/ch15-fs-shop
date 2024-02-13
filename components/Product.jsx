@@ -18,7 +18,6 @@ import {
 import Heading from "@/components/Heading";
 import { slugify, formatPrice } from "@/lib/utils/formatters";
 
-// ! DESCRIPTION PLACEHOLDER, LIKELY REMOVE LATER
 const ProductDisplay = ({
   product: { _id, title, image, price, quantity, description } = {},
   deleteHandler = () => {
